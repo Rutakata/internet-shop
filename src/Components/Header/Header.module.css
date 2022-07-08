@@ -1,0 +1,50 @@
+.header {
+    height: 80px;
+    padding: 0 100px;
+    display: flex;
+    justify-content: space-between;
+}
+.header__navigation {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    width: 205px;
+}
+.header__logo {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+.header__actions {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: flex-end;
+    width: 205px;
+}
+.navigation__category {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-family: Raleway, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0 16px;
+    color: #000;
+}
+.navigation__category:hover {
+    border-bottom: 2px solid #5ECE7B;
+    box-sizing: border-box;
+    font-family: Raleway, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #5ECE7B;
+}
+.actions_action {
+    font-family: Raleway, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+}
+.actions_cart {
+    margin-left: 22px;
+}
