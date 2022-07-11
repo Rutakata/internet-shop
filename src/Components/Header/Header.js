@@ -13,7 +13,10 @@ const Header = (props) => {
                     props.categories.map(category => (
                         // <CategoryButton category={category} changeCurrentCategory={props.changeCurrentCategory}
                         //                 key={category.name}/>
-                        <div className={style.navigation__category} onClick={() => props.changeCurrentCategory(category.name)}>
+                        <div className={style.navigation__category} onClick={() => {
+                            props.changeCurrentCategory(category.name)
+                            console.log("category ", category.name)
+                        }}>
                             {category.name}
                         </div>
                     )
