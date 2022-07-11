@@ -12,25 +12,36 @@ class CategoryContainer extends React.Component {
         }
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        alert(this.props.currentCategory)
-        this.setProducts(this.props.allProducts, this.props.currentCategory)
+    componentDidMount() {
+        this.setState({
+            currentCategoryProducts: this.props.allProducts
+        })
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.currentCategory !== this.props.currentCategory) {
+            this.setProducts(this.props.allProducts, this.props.currentCategory)
+        }
     }
 
     setProducts(allProducts, currentCategory) {
-        // let productsToSet = allProducts.filter(product => (product.category === currentCategory ? product: null))
-        let productsToSet = []
-        for (let product of allProducts) {
-            if (product.category === currentCategory) {
-                productsToSet.push(product)
-            }
-        }
-
-        if (productsToSet != this.state.currentCategoryProducts) {
+        if (currentCategory === "all") {
             this.setState({
-                currentCategoryProducts: productsToSet
+                currentCategoryProducts: this.props.allProducts
+            })
+        }else {
+            this.setState({
+                currentCategoryProducts: allProducts.filter(product => (product.category === currentCategory ? product: null))
             })
         }
+        // let productsToSet = []
+        // for (let product of allProducts) {
+        //     if (product.category === currentCategory) {
+        //         productsToSet.push(product)
+        //     }
+        // }
+
+
     }
 
     render() {
