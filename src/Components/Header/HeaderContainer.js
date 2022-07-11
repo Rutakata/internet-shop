@@ -4,6 +4,7 @@ import {GET_CATEGORIES} from "../../Queries/Categories";
 import {setCategories} from "../../Redux/headerReducer";
 import {connect} from "react-redux";
 import Header from "./Header";
+import {getCategories} from "../../Redux/Selectors/headerSelectors";
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
@@ -26,12 +27,12 @@ class HeaderContainer extends React.Component {
     }
 
     render() {
-        return <Header categories={this.props.categories} />
+        return <Header categories={this.props.categories} changeCurrentCategory={this.props.changeCurrentCategory}/>
     }
 }
 
 let mapStateToProps = (state) => ({
-    categories: state.header.categories
+    categories: getCategories(state)
 })
 
 export default connect(mapStateToProps, {setCategories})(HeaderContainer)

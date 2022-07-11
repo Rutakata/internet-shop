@@ -2,6 +2,7 @@ import React from "react";
 import style from "./Header.module.css"
 import logo from "../../Common/Images/logo.png"
 import empty_cart from "../../Common/Images/empty_cart.png"
+import CategoryButton from "./CategoryButton/CategoryButton";
 
 
 const Header = (props) => {
@@ -9,11 +10,14 @@ const Header = (props) => {
         <div className={style.header}>
             <div className={style.header__navigation}>
                 {
-                    props.categories.map(category => (<div key={category.name} className={style.navigation__category}>{category.name}</div>))
-                }
-                {/*<div className={style.navigation__category}>All</div>*/}
-                {/*<div className={style.navigation__category}>Clothes</div>*/}
-                {/*<div className={style.navigation__category}>Tech</div>*/}
+                    props.categories.map(category => (
+                        // <CategoryButton category={category} changeCurrentCategory={props.changeCurrentCategory}
+                        //                 key={category.name}/>
+                        <div className={style.navigation__category} onClick={() => props.changeCurrentCategory(category.name)}>
+                            {category.name}
+                        </div>
+                    )
+                )}
             </div>
             <div className={style.header__logo}>
                 <img src={logo} alt="logo" />
