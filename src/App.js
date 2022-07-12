@@ -6,18 +6,31 @@ import {client} from "./apolloClient";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import {setProducts} from "./Redux/categoryReducer";
 import CategoryContainer from "./Components/Category/CategoryContainer";
+import {Route, Routes} from "react-router-dom";
+import ProductInfoContainer from "./Components/Product/ProductInfoContainer";
 
 
-const App = (props) => {
+const App = () => {
     return (
         <div className="App">
             <HeaderContainer />
-            <CategoryContainer />
+            <Routes>
+                <Route path="/" element={<CategoryContainer />} />
+                <Route path="/category" element={<CategoryContainer />} />
+                <Route path="/product" element={<ProductInfoContainer />} />
+            </Routes>
         </div>
     );
 }
 
 class AppContainer extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            loading: true
+        }
+    }
+
     componentDidMount() {
         this.getInitialData()
     }
@@ -32,6 +45,10 @@ class AppContainer extends React.Component {
         });
 
         this.subobj = watchQuery2.subscribe(({data, loading}) => {
+            this.setState({
+                loading: loading
+            })
+
             if (!loading) {
                 this.props.setProducts(data.category.products)
             }
@@ -39,6 +56,7 @@ class AppContainer extends React.Component {
     }
 
     render() {
+        if (this.state.loading) return <div>Loading...</div>
         return <App />
     }
 }

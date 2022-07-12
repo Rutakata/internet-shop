@@ -4,9 +4,13 @@
     padding: 16px;
     margin: 0 auto;
     box-sizing: border-box;
+    position: relative;
 }
 .productBody:hover {
     box-shadow: 0 0 40px gray;
+}
+.productBody:hover > .productBody__cartButton {
+    display: block;
 }
 .productBody_name {
     font-family: Raleway, sans-serif;
@@ -25,4 +29,20 @@
 }
 .productBody_image {
     height: 330px;
+}
+.productBody__cartButton {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #5ECE7B;
+    position: absolute;
+    bottom: 70px;
+    right: 30px;
+    box-shadow: 0 0 10px gray;
+    display: none;
+}
+.cartButton_image {
+    margin: 0 auto;
+    display: flex;
+    align-self: center;
 }

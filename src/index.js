@@ -6,14 +6,17 @@ import AppContainer from "./App";
 import {Provider} from "react-redux";
 import store from "./Redux/store";
 import {client} from "./apolloClient";
+import {BrowserRouter} from "react-router-dom";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
     <ApolloProvider client={client}>
-        <Provider store={store}>
-            <AppContainer/>
-        </Provider>
+        <BrowserRouter>
+            <Provider store={store}>
+                <AppContainer/>
+            </Provider>
+        </BrowserRouter>
     </ApolloProvider>
 );

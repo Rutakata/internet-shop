@@ -9,17 +9,9 @@ const Header = (props) => {
     return (
         <div className={style.header}>
             <div className={style.header__navigation}>
-                {
-                    props.categories.map(category => (
-                        // <CategoryButton category={category} changeCurrentCategory={props.changeCurrentCategory}
-                        //                 key={category.name}/>
-                        <div className={style.navigation__category} onClick={() => {
-                            props.changeCurrentCategory(category.name)
-                            console.log("category ", category.name)
-                        }}>
-                            {category.name}
-                        </div>
-                    )
+                { props.categories.map(category =>
+                    (<CategoryButton category={category} changeCurrentCategory={props.changeCurrentCategory}
+                                        key={category.name}/>)
                 )}
             </div>
             <div className={style.header__logo}>

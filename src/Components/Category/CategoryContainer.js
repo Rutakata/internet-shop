@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {getAllProducts, getCurrentCategory} from "../../Redux/Selectors/categoryPageSelectors";
 import Category from "./Category";
+import {setProductInfo} from "../../Redux/productReducer";
 
 
 class CategoryContainer extends React.Component {
@@ -16,6 +17,8 @@ class CategoryContainer extends React.Component {
         this.setState({
             currentCategoryProducts: this.props.allProducts
         })
+        console.log(this.props.currentCategory)
+        console.log(this.state)
     }
 
     componentDidUpdate(prevProps) {
@@ -34,18 +37,10 @@ class CategoryContainer extends React.Component {
                 currentCategoryProducts: allProducts.filter(product => (product.category === currentCategory ? product: null))
             })
         }
-        // let productsToSet = []
-        // for (let product of allProducts) {
-        //     if (product.category === currentCategory) {
-        //         productsToSet.push(product)
-        //     }
-        // }
-
-
     }
 
     render() {
-        return <Category products={this.state.currentCategoryProducts} />
+        return <Category products={this.state.currentCategoryProducts} setProductInfo={this.props.setProductInfo} />
     }
 }
 
@@ -54,4 +49,4 @@ let mapStateToProps = (state) => ({
     currentCategory: getCurrentCategory(state)
 })
 
-export default connect(mapStateToProps, null)(CategoryContainer)
+export default connect(mapStateToProps, {setProductInfo})(CategoryContainer)
