@@ -1,0 +1,51 @@
+.productPage {
+    display: grid;
+    grid-template-columns: 80px 600px 400px;
+    grid-column-gap: 40px;
+    margin: 0 100px;
+}
+.productPage__imageSet {
+    margin-right: 30px;
+    display: grid;
+    grid-auto-rows: 80px;
+    grid-row-gap: 40px;
+}
+.productPage__currentImage {
+    margin-right: 100px;
+}
+
+.currentImage__image {
+    width: 600px;
+}
+.productPage__productInfo {
+
+}
+.productInfo__name {
+    font-family: Raleway, sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.productInfo__brand {
+    font-family: Raleway, sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    margin: 0 0 45px;
+}
+.productInfo_addToCart {
+    width: 300px;
+    height: 50px;
+    background-color: #5ECE7B;
+    color: #fff;
+    border: none;
+    margin-top: 20px;
+    font-family: Raleway, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+.productInfo_description {
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 40px;
+}

@@ -1,0 +1,8 @@
+.imageSetItemBody {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+}
+.imageSetItem{
+    width: 80px;
+}
