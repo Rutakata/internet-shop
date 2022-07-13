@@ -1,0 +1,14 @@
+.priceBlock {
+    margin: 35px 0 20px;
+}
+.priceBlock_name {
+    font-family: Roboto Condensed, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 10px;
+}
+.priceBlock_price {
+    font-family: Raleway, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+}

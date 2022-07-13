@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import style from "./ProductInfo.module.css"
 import ImageSetItem from "./ImageSetItem/ImageSetItem";
 import AttributeBlock from "./AttributeItems/AttributeBlock";
+import PriceBlock from "./PriceBlock/PriceBlock";
 
 
 const ProductInfo = (props) => {
@@ -18,14 +19,16 @@ const ProductInfo = (props) => {
             <div className={style.productPage__productInfo}>
                 <h1 className={style.productInfo__name}>{props.product.name}</h1>
                 <h2 className={style.productInfo__brand}>{props.product.brand}</h2>
+
                 {
                     props.product.attributes.map(attribute => (<AttributeBlock attribute={attribute}/>))
                 }
+
+                <PriceBlock symbol={props.product.prices[0].currency.symbol} price={props.product.prices[0].amount}/>
+
                 <button className={style.productInfo_addToCart}>Add to cart</button>
+
                 <p dangerouslySetInnerHTML={{__html: props.product.description}} className={style.productInfo_description}/>
-                <Link to={"/category"}>
-                    Go back
-                </Link>
             </div>
         </div>
     )

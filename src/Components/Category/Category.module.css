@@ -1,8 +1,8 @@
 .categoryPage {
-    padding: 0 100px;
+    margin: 0 100px 30px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 40px;
-    grid-auto-rows: 500px;
+    grid-template-columns: 390px 390px 390px;
+    grid-column-gap: 50px;
+    grid-auto-rows: 445px;
     grid-row-gap: 100px;
 }

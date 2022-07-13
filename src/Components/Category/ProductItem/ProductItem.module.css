@@ -2,7 +2,6 @@
     height: 100%;
     width: 100%;
     padding: 16px;
-    margin: 0 auto;
     box-sizing: border-box;
     position: relative;
 }
@@ -27,8 +26,13 @@
     line-height: 29px;
     margin: 0;
 }
-.productBody_image {
+.productBody__imageBody {
     height: 330px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.imageBody_image {
+    width: 100%;
 }
 .productBody__cartButton {
     width: 50px;
@@ -42,7 +46,9 @@
     display: none;
 }
 .cartButton_image {
+    display: block;
     margin: 0 auto;
-    display: flex;
-    align-self: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
