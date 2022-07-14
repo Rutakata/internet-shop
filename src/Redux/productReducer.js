@@ -16,5 +16,5 @@ export const productReducer = (state = initialState, action) => {
 }
 
 export const setProductInfo = (product) => {
-    return { type: SET_PRODUCT_INFO, product }
+    return { type: SET_PRODUCT_INFO, product}
 }

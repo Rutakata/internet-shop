@@ -1,0 +1,23 @@
+.dropdownCartBody {
+    width: 325px;
+    height: 600px;
+    position: absolute;
+    right: 70px;
+    background-color: #fff;
+    padding: 32px 16px;
+}
+.dropdownCartBody__bagSize {
+    margin: 0 0 32px;
+}
+.dropdownCartBody__bagSize h2{
+    margin: 0;
+    display: inline-block;
+    font-family: Raleway, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+.dropdownCartBody__bagSize span {
+    font-family: Raleway, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}

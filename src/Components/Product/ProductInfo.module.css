@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 80px 600px 400px;
     grid-column-gap: 40px;
-    margin: 0 100px;
+    margin: 0 100px 30px;
 }
 .productPage__imageSet {
     margin-right: 30px;
@@ -42,6 +42,12 @@
     font-family: Raleway, sans-serif;
     font-size: 16px;
     font-weight: 600;
+}
+.productInfo_addToCart:hover {
+    background-color: #fff;
+    border: 1px solid #5ECE7B;
+    box-sizing: border-box;
+    color: #5ECE7B;
 }
 .productInfo_description {
     font-family: Roboto, sans-serif;

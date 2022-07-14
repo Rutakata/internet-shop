@@ -3,6 +3,8 @@ import style from "./Header.module.css"
 import logo from "../../Common/Images/logo.png"
 import empty_cart from "../../Common/Images/empty_cart.png"
 import CategoryButton from "./CategoryButton/CategoryButton";
+import DropdownCart from "./DropdownCart/DropdownCart";
+import DropdownCartContainer from "./DropdownCart/DropdownCartContainer";
 
 
 const Header = (props) => {
@@ -18,10 +20,11 @@ const Header = (props) => {
                 <img src={logo} alt="logo" />
             </div>
             <div className={style.header__actions}>
-                <div className={style.actions_action}>$ ^</div>
-                <div className={style.actions_action}>
-                    <img src={empty_cart} alt="empty_cart_image" className={style.actions_cart}/>
+                <div className={style.actions_currency}>$ ^</div>
+                <div className={style.actions_cart}>
+                    <img src={empty_cart} alt="empty_cart_image" className={style.actions_cart_img}/>
                 </div>
+                <DropdownCartContainer style={style.dropdownCartWrapper}/>
             </div>
         </div>
     )

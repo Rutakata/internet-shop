@@ -1,6 +1,7 @@
 import React from "react";
 import ProductInfo from "./ProductInfo";
 import {getProductInfo} from "../../Redux/Selectors/productPageSelectors";
+import {addProductToCart} from "../../Redux/cartReducer";
 import {connect} from "react-redux";
 
 
@@ -22,7 +23,7 @@ class ProductInfoContainer extends React.Component {
 
     render() {
         return <ProductInfo product={this.props.product} currentImage={this.state.currentImage}
-                            setCurrentImage={this.setCurrentImage}/>
+                            setCurrentImage={this.setCurrentImage} addProductToCart={this.props.addProductToCart}/>
     }
 }
 
@@ -30,4 +31,4 @@ let mapStateToProps = (state) => ({
     product: getProductInfo(state)
 })
 
-export default connect(mapStateToProps, null)(ProductInfoContainer)
+export default connect(mapStateToProps, {addProductToCart})(ProductInfoContainer)

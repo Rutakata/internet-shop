@@ -1,5 +1,4 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import style from "./ProductInfo.module.css"
 import ImageSetItem from "./ImageSetItem/ImageSetItem";
 import AttributeBlock from "./AttributeItems/AttributeBlock";
@@ -26,7 +25,10 @@ const ProductInfo = (props) => {
 
                 <PriceBlock symbol={props.product.prices[0].currency.symbol} price={props.product.prices[0].amount}/>
 
-                <button className={style.productInfo_addToCart}>Add to cart</button>
+                <button className={style.productInfo_addToCart}
+                        onClick={() => {props.addProductToCart(props.product)}}>
+                    Add to cart
+                </button>
 
                 <p dangerouslySetInnerHTML={{__html: props.product.description}} className={style.productInfo_description}/>
             </div>
