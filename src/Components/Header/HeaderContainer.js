@@ -8,21 +8,6 @@ import Header from "./Header";
 import {getCategories} from "../../Redux/Selectors/headerSelectors";
 
 class HeaderContainer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            showCart: "none"
-        }
-
-        this.handleShowCart = this.handleShowCart.bind(this)
-    }
-
-    handleShowCart() {
-        this.setState({
-            showCart: this.state.showCart === "none" ? "block" : "none"
-        })
-    }
-
     componentDidMount() {
         this.getInitialData()
     }
@@ -43,8 +28,7 @@ class HeaderContainer extends React.Component {
     }
 
     render() {
-        return <Header categories={this.props.categories} changeCurrentCategory={this.props.setCurrentCategory}
-                       showCart={this.state.showCart} handleShowCart={this.handleShowCart}/>
+        return <Header categories={this.props.categories} changeCurrentCategory={this.props.setCurrentCategory}/>
     }
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import {getCart} from "../../Redux/Selectors/cartPageSelectors";
+import {getCart} from "../../../Redux/Selectors/cartPageSelectors";
 import {connect} from "react-redux";
 import DropdownCart from "./DropdownCart";
 
@@ -13,10 +13,6 @@ class DropdownCartContainer extends React.Component {
         console.log(this.props.cart.length)
     }
 
-    changeProductNumber(id) {
-
-    }
-
     componentDidUpdate() {
         if (this.props.cart.length !== this.state.numberOfProducts) {
             this.setState({
@@ -26,9 +22,7 @@ class DropdownCartContainer extends React.Component {
     }
 
     render() {
-        return <DropdownCart numberOfProducts={this.state.numberOfProducts} cart={this.props.cart}
-                             style={this.props.style} showCart={this.props.showCart}
-                             handleShowCart={this.props.handleShowCart}/>
+        return <DropdownCart numberOfProducts={this.state.numberOfProducts} cart={this.props.cart} style={this.props.style}/>
     }
 }
 

@@ -67,13 +67,3 @@
     background: rgba(57, 55, 72, 0.22);
     display: none;
 }
-.dropdownCartWrapper_active {
-    position: absolute;
-    top: 80px;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    background: rgba(57, 55, 72, 0.22);
-    display: block;
-}
