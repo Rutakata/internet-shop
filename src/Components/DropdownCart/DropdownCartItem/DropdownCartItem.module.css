@@ -1,0 +1,52 @@
+.dropdownCartItemBody {
+    display: grid;
+    grid-template-columns: 150px 25px 140px;
+    grid-column-gap: 5px;
+    min-height: 200px;
+    margin-bottom: 40px;
+}
+.dropdownCartItemBody__info {
+}
+.dropdownCartItemBody__info_name {
+    font-family: Raleway, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0 0 5px;
+}
+.dropdownCartItemBody__info_price {
+    font-family: Raleway, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.dropdownCartItemBody__info__attributes {
+}
+.dropdownCartItemBody__productNumber {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.dropdownCartItemBody__productNumber_button {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #1D1F22;
+    font-size: 16px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.dropdownCartItemBody__productNumber_button:hover {
+    background-color: #1D1F22;
+    color: #fff;
+}
+.dropdownCartItemBody__productImage {
+    width: 140px;
+    min-height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+.dropdownCartItemBody img {
+    position: absolute;
+    width: 140px;
+    top: 50%;
+    transform: translateY(-50%);
+}

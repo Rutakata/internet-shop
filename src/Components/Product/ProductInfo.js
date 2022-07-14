@@ -1,8 +1,11 @@
 import React from "react";
 import style from "./ProductInfo.module.css"
 import ImageSetItem from "./ImageSetItem/ImageSetItem";
-import AttributeBlock from "./AttributeItems/AttributeBlock";
+import AttributeBlock from "../../Common/ProductAttributes/AttributeBlock";
 import PriceBlock from "./PriceBlock/PriceBlock";
+import colorStyle from "../../Common/ProductAttributes/AttributeItems/ColorItem/ColorItem.module.css"
+import sizeStyle from "../../Common/ProductAttributes/AttributeItems/SizeItem/SizeItem.module.css"
+import attributeBlockStyle from "../../Common/ProductAttributes/AttributeBlock.module.css"
 
 
 const ProductInfo = (props) => {
@@ -20,7 +23,9 @@ const ProductInfo = (props) => {
                 <h2 className={style.productInfo__brand}>{props.product.brand}</h2>
 
                 {
-                    props.product.attributes.map(attribute => (<AttributeBlock attribute={attribute}/>))
+                    props.product.attributes.map(attribute => (<AttributeBlock attribute={attribute} colorStyle={colorStyle}
+                                                                               sizeStyle={sizeStyle}
+                                                                               style={attributeBlockStyle}/>))
                 }
 
                 <PriceBlock symbol={props.product.prices[0].currency.symbol} price={props.product.prices[0].amount}/>
