@@ -3,6 +3,5 @@ export const getAllProducts = (state) => {
 }
 
 export const getCurrentCategory = (state) => {
-    console.log("selector", state.categoryPage.currentCategory)
     return state.categoryPage.currentCategory
 }

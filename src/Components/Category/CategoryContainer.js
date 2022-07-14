@@ -17,8 +17,6 @@ class CategoryContainer extends React.Component {
         this.setState({
             currentCategoryProducts: this.props.allProducts
         })
-        console.log(this.props.currentCategory)
-        console.log(this.state)
     }
 
     componentDidUpdate(prevProps) {

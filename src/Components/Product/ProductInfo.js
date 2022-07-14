@@ -12,8 +12,9 @@ const ProductInfo = (props) => {
     return (
         <div className={style.productPage}>
             <div className={style.productPage__imageSet}>
-                {props.product.gallery.map(image => (<ImageSetItem src={`${image}`}
-                                                                   setCurrentImage={props.setCurrentImage}/>))}
+                {props.product.gallery.map((image, index) => (<ImageSetItem src={`${image}`}
+                                                                   setCurrentImage={props.setCurrentImage}
+                                                                   key={index}/>))}
             </div>
             <div className={style.productPage__currentImage}>
                 <img src={props.currentImage} className={style.currentImage__image}/>
@@ -23,9 +24,9 @@ const ProductInfo = (props) => {
                 <h2 className={style.productInfo__brand}>{props.product.brand}</h2>
 
                 {
-                    props.product.attributes.map(attribute => (<AttributeBlock attribute={attribute} colorStyle={colorStyle}
+                    props.product.attributes.map((attribute, index) => (<AttributeBlock attribute={attribute} colorStyle={colorStyle}
                                                                                sizeStyle={sizeStyle}
-                                                                               style={attributeBlockStyle}/>))
+                                                                               style={attributeBlockStyle} key={index}/>))
                 }
 
                 <PriceBlock symbol={props.product.prices[0].currency.symbol} price={props.product.prices[0].amount}/>

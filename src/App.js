@@ -17,7 +17,10 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<CategoryContainer />} />
                 <Route path="/category" element={<CategoryContainer />} />
-                <Route path="/product" element={<ProductInfoContainer />} />
+                <Route path="/product/">
+                    <Route path=":productId" element={<ProductInfoContainer />} />
+                </Route>
+
             </Routes>
         </div>
     );
@@ -40,11 +43,11 @@ class AppContainer extends React.Component {
     }
 
     async getInitialData() {
-        const watchQuery2 = client.watchQuery({
+        const watchQuery = client.watchQuery({
             query: GET_ALL_CATEGORY,
         });
 
-        this.subobj = watchQuery2.subscribe(({data, loading}) => {
+        this.subobj = watchQuery.subscribe(({data, loading}) => {
             this.setState({
                 loading: loading
             })

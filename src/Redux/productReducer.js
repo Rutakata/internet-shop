@@ -2,7 +2,7 @@ const SET_PRODUCT_INFO = "SET_PRODUCT_INFO"
 
 
 let initialState = {
-    productInfo: {}
+    productInfo: null
 }
 
 export const productReducer = (state = initialState, action) => {

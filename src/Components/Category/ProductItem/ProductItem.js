@@ -14,7 +14,7 @@ const ProductItem = (props) => {
             <p className={style.productBody_price}>
                 {props.product.prices[0].currency.symbol}{props.product.prices[0].amount}
             </p>
-            <Link className={style.productBody__cartButton} to={"/product"}
+            <Link className={style.productBody__cartButton} to={`/product/${props.product.id}`}
                   onClick={() => props.setProductInfo(props.product)}>
                 <img src={cart} alt="Cart" className={style.cartButton_image}/>
             </Link>

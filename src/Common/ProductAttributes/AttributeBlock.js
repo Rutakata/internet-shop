@@ -7,9 +7,11 @@ const AttributeBlock = (props) => {
     let attributeItems
 
     if (props.attribute.type === "swatch") {
-        attributeItems = props.attribute.items.map(item => (<ColorItem item={item} style={props.colorStyle}/>))
+        attributeItems = props.attribute.items.map((item, index) => (<ColorItem item={item} style={props.colorStyle}
+                                                                                key={index}/>))
     }else if (props.attribute.type === "text") {
-        attributeItems = props.attribute.items.map(item => (<SizeItem item={item} style={props.sizeStyle}/>))
+        attributeItems = props.attribute.items.map((item, index) => (<SizeItem item={item} style={props.sizeStyle}
+                                                                               key={index}/>))
     }
 
     return (

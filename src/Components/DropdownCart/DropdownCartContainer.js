@@ -10,7 +10,6 @@ class DropdownCartContainer extends React.Component {
         this.state = {
             numberOfProducts: this.props.cart.length
         }
-        console.log(this.props.cart.length)
     }
 
     changeProductNumber(id) {
