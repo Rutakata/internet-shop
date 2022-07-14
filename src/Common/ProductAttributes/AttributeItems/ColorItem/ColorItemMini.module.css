@@ -1,0 +1,14 @@
+.colorItem {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 8px;
+    box-sizing: border-box;
+    border: 1px solid #1D1F22;
+}
+.colorItem:hover {
+    border: 1px solid #5ECE7B;
+}
+.colorItem_choice {
+    border: 1px solid #5ECE7B;
+}
