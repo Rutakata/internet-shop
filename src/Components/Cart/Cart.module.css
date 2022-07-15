@@ -1,0 +1,9 @@
+.cartBlock {
+    margin: 0 100px;
+}
+.cartBlock__header {
+    font-family: Raleway, sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    margin: 0 0 80px;
+}

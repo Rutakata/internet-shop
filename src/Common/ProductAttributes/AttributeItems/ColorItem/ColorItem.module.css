@@ -2,7 +2,8 @@
     width: 35px;
     height: 35px;
     display: inline-block;
-    margin-right: 8px;
+    margin-right: 10px;
+    border: 1px solid #1D1F22;
     box-sizing: border-box;
 }
 .colorItem:hover {

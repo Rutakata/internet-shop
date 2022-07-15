@@ -8,6 +8,7 @@ import {setProducts} from "./Redux/categoryReducer";
 import CategoryContainer from "./Components/Category/CategoryContainer";
 import {Route, Routes} from "react-router-dom";
 import ProductInfoContainer from "./Components/Product/ProductInfoContainer";
+import CartContainer from "./Components/Cart/CartContainer";
 
 
 const App = () => {
@@ -20,7 +21,7 @@ const App = () => {
                 <Route path="/product/">
                     <Route path=":productId" element={<ProductInfoContainer />} />
                 </Route>
-
+                <Route path="/cart" element={<CartContainer />} />
             </Routes>
         </div>
     );
