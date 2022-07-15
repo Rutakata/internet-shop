@@ -30,6 +30,8 @@ class ProductInfoContainer extends React.Component {
                 loading: false
             })
         }
+
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
     }
 
     // componentWillUnmount() {

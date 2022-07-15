@@ -10,9 +10,7 @@ export const cartReducer = (state=initialState, action) => {
     switch (action.type) {
         case ADD_PRODUCT_TO_CART:
             if (!state.cart.some(product => product.id === action.product.id)) {
-                if (action.product.inStock) {
-                    return {...state, cart: [...state.cart, {...action.product, number: 1}]}
-                }
+                return {...state, cart: [...state.cart, {...action.product, number: 1}]}
             }
             return state
         case CHANGE_PRODUCT_NUMBER:
