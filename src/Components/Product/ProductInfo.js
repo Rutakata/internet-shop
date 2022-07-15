@@ -31,7 +31,9 @@ const ProductInfo = (props) => {
 
                 <PriceBlock symbol={props.product.prices[0].currency.symbol} price={props.product.prices[0].amount}/>
 
-                <button className={style.productInfo_addToCart}
+                <button className={props.product.inStock ?
+                    style.productInfo_addToCart:
+                    style.productInfo_addToCart_disabled}
                         onClick={() => {props.addProductToCart(props.product)}}>
                     Add to cart
                 </button>
