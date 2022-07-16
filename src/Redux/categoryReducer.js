@@ -23,7 +23,6 @@ export const setProducts = (products) => {
 }
 
 export const setCurrentCategory = (currentCategory) => {
-    console.log("reducer ", currentCategory)
     return {type: SET_CURRENT_CATEGORY, currentCategory}
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import ProductInfo from "./ProductInfo";
-import {getProductInfo} from "../../Redux/Selectors/productPageSelectors";
-import {setProductInfo} from "../../Redux/productReducer";
+import {getChosenAttributes, getProductInfo} from "../../Redux/Selectors/productPageSelectors";
+import {setProductInfo, handleAttributeChange} from "../../Redux/productReducer";
 import {addProductToCart} from "../../Redux/cartReducer";
 import {connect} from "react-redux";
 import {client} from "../../apolloClient";
@@ -27,8 +27,9 @@ class ProductInfoContainer extends React.Component {
             this.getInitialData(this.state.productId)
         }else {
             this.setState({
-                loading: false
-            })
+                    loading: false,
+                }
+            )
         }
 
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
@@ -64,13 +65,19 @@ class ProductInfoContainer extends React.Component {
 
     render() {
         if (this.state.loading) return <div>Loading...</div>
+
         return <ProductInfo product={this.props.product} currentImage={this.state.currentImage}
-                            setCurrentImage={this.setCurrentImage} addProductToCart={this.props.addProductToCart}/>
+                            setCurrentImage={this.setCurrentImage} addProductToCart={this.props.addProductToCart}
+                            handleAttributeChange={this.props.handleAttributeChange}
+                            chosenAttributes={this.props.chosenAttributes}/>
     }
 }
 
 let mapStateToProps = (state) => ({
-    product: getProductInfo(state)
+    product: getProductInfo(state),
+    chosenAttributes: getChosenAttributes(state)
 })
 
-export default compose(withRouter, connect(mapStateToProps, {addProductToCart, setProductInfo}))(ProductInfoContainer)
+export default compose(withRouter, connect(mapStateToProps, {addProductToCart,
+                                                                            setProductInfo,
+                                                                            handleAttributeChange}))(ProductInfoContainer)

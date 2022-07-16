@@ -9,6 +9,7 @@ import CategoryContainer from "./Components/Category/CategoryContainer";
 import {Route, Routes} from "react-router-dom";
 import ProductInfoContainer from "./Components/Product/ProductInfoContainer";
 import CartContainer from "./Components/Cart/CartContainer";
+import {GET_CURRENCIES} from "./Queries/Currencies";
 
 
 const App = () => {
@@ -44,11 +45,15 @@ class AppContainer extends React.Component {
     }
 
     async getInitialData() {
-        const watchQuery = client.watchQuery({
+        const categoryQuery = client.watchQuery({
             query: GET_ALL_CATEGORY,
-        });
+        })
 
-        this.subobj = watchQuery.subscribe(({data, loading}) => {
+        const currenciesQuery = client.watchQuery({
+            query: GET_CURRENCIES
+        })
+
+        this.subobj = categoryQuery.subscribe(({data, loading}) => {
             this.setState({
                 loading: loading
             })
@@ -56,7 +61,7 @@ class AppContainer extends React.Component {
             if (!loading) {
                 this.props.setProducts(data.category.products)
             }
-        });
+        })
     }
 
     render() {

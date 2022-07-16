@@ -1,4 +1,4 @@
-.sizeItem {
+.sizeItem, .sizeItem_active {
     width: 65px;
     height: 45px;
     border: 1px solid #1D1F22;
@@ -10,7 +10,7 @@
     line-height: 45px;
     text-align: center;
 }
-.sizeItem:hover {
+.sizeItem:hover, .sizeItem_active {
     background-color: #1D1F22;
     color: #fff;
 }

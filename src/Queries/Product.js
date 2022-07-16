@@ -9,6 +9,7 @@ export function getProductData() {
         id, name, brand, gallery, category, description, 
         inStock, 
         attributes {
+            id,
             name,
             type,
             items {

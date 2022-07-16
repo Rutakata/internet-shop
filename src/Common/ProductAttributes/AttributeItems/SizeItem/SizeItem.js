@@ -4,7 +4,10 @@ import React from "react";
 
 const SizeItem = (props) => {
     return (
-        <div className={props.style.sizeItem}>{props.item.value}</div>
+        <div className={props.style.sizeItem}
+             onClick={() => props.handleAttributeChange(props.id, props.item.value)}>
+            {props.item.value}
+        </div>
     )
 }
 

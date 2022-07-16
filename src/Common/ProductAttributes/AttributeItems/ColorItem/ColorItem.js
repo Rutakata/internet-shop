@@ -4,7 +4,10 @@ import React from "react";
 
 const ColorItem = (props) => {
     return (
-        <div className={props.style.colorItem} style={{backgroundColor: props.item.value}}></div>
+        <div className={props.isActive ? props.style.colorItem_active: props.style.colorItem}
+             style={{backgroundColor: props.item.value}}
+             onClick={() => props.handleAttributeChange(props.id, props.item.value)}>
+        </div>
     )
 }
 

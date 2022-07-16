@@ -1,4 +1,4 @@
-.colorItem {
+.colorItem, .colorItem_active {
     width: 35px;
     height: 35px;
     display: inline-block;
@@ -10,5 +10,8 @@
     border: 1px solid #5ECE7B;
 }
 .colorItem_choice {
+    border: 1px solid #5ECE7B;
+}
+.colorItem_active {
     border: 1px solid #5ECE7B;
 }

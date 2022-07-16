@@ -12,10 +12,6 @@ class DropdownCartContainer extends React.Component {
         }
     }
 
-    changeProductNumber(id) {
-
-    }
-
     componentDidUpdate() {
         if (this.props.cart.length !== this.state.numberOfProducts) {
             this.setState({
