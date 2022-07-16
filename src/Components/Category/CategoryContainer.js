@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {getAllProducts, getCurrentCategory} from "../../Redux/Selectors/categoryPageSelectors";
 import Category from "./Category";
 import {setProductInfo} from "../../Redux/productReducer";
+import {getCurrentCurrency} from "../../Redux/Selectors/currencySelectors";
 
 
 class CategoryContainer extends React.Component {
@@ -38,13 +39,15 @@ class CategoryContainer extends React.Component {
     }
 
     render() {
-        return <Category products={this.state.currentCategoryProducts} setProductInfo={this.props.setProductInfo} />
+        return <Category products={this.state.currentCategoryProducts} setProductInfo={this.props.setProductInfo}
+                         currentCurrency={this.props.currentCurrency} />
     }
 }
 
 let mapStateToProps = (state) => ({
     allProducts: getAllProducts(state),
-    currentCategory: getCurrentCategory(state)
+    currentCategory: getCurrentCategory(state),
+    currentCurrency: getCurrentCurrency(state)
 })
 
 export default connect(mapStateToProps, {setProductInfo})(CategoryContainer)

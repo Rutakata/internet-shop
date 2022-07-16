@@ -9,19 +9,19 @@ let initialState =  {
 export const cartReducer = (state=initialState, action) => {
     switch (action.type) {
         case ADD_PRODUCT_TO_CART:
-            if (!state.cart.some(product => product.id === action.product.id)) {
+            if (!state.cart.some(product => product.product.id === action.product.id)) {
                 return {...state, cart: [...state.cart, {...action.product, number: 1}]}
             }
             return state
         case CHANGE_PRODUCT_NUMBER:
             let newProductCart = state.cart.map(product => {
-                if (product.id === action.id) {
-                    product.number = action.number
+                if (product.product.id === action.id) {
+                    product.product.number = action.number
 
-                    return product
+                    return product.product
                 }
 
-                return product
+                return product.product
             })
 
             return {...state, cart: [...newProductCart]}

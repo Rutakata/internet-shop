@@ -7,13 +7,13 @@ import attributeBlockStyle from "../../../Common/ProductAttributes/AttributeBloc
 
 
 const DropdownCartItem = (props) => {
-
     return (
         <div className={style.dropdownCartItemBody}>
             <div className={style.dropdownCartItemBody__info}>
                 <h3 className={style.dropdownCartItemBody__info_name}>{props.product.name}</h3>
                 <span className={style.dropdownCartItemBody__info_price}>
-                    {props.product.prices[0].currency.symbol}{props.product.prices[0].amount}
+                    {props.product.prices[props.currentCurrency].currency.symbol}
+                    {props.product.prices[props.currentCurrency].amount}
                 </span>
                 <div className={style.dropdownCartItemBody__info__attributes}>
                     {

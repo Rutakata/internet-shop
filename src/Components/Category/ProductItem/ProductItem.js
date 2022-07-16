@@ -17,7 +17,8 @@ const ProductItem = (props) => {
             </div>
             <h1 className={style.productBody_name}>{props.product.name}</h1>
             <p className={style.productBody_price}>
-                {props.product.prices[0].currency.symbol}{props.product.prices[0].amount}
+                {props.product.prices[props.currentCurrency].currency.symbol}
+                {props.product.prices[props.currentCurrency].amount}
             </p>
             <Link className={style.productBody__cartButton} to={`/product/${props.product.id}`}
                   onClick={() => props.setProductInfo(props.product)}>

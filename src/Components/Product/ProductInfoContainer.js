@@ -8,6 +8,7 @@ import {client} from "../../apolloClient";
 import {compose} from "redux";
 import {withRouter} from "../../HOC/withRouter";
 import {getProductData} from "../../Queries/Product";
+import {getCurrentCurrency} from "../../Redux/Selectors/currencySelectors";
 
 
 class ProductInfoContainer extends React.Component {
@@ -69,13 +70,14 @@ class ProductInfoContainer extends React.Component {
         return <ProductInfo product={this.props.product} currentImage={this.state.currentImage}
                             setCurrentImage={this.setCurrentImage} addProductToCart={this.props.addProductToCart}
                             handleAttributeChange={this.props.handleAttributeChange}
-                            chosenAttributes={this.props.chosenAttributes}/>
+                            chosenAttributes={this.props.chosenAttributes} currentCurrency={this.props.currentCurrency}/>
     }
 }
 
 let mapStateToProps = (state) => ({
     product: getProductInfo(state),
-    chosenAttributes: getChosenAttributes(state)
+    chosenAttributes: getChosenAttributes(state),
+    currentCurrency: getCurrentCurrency(state)
 })
 
 export default compose(withRouter, connect(mapStateToProps, {addProductToCart,

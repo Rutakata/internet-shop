@@ -7,7 +7,8 @@ const Category = (props) => {
     return (
         <div className={style.categoryPage}>
             {props.products.map(product => (<ProductItem product={product} key={product.id}
-                                                         setProductInfo={props.setProductInfo} />))}
+                                                         setProductInfo={props.setProductInfo}
+                                                         currentCurrency={props.currentCurrency} />))}
         </div>
     )
 }

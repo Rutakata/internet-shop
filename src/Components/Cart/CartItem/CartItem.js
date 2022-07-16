@@ -13,7 +13,8 @@ const CartItem = (props) => {
                 <h2 className={style.cartItemBody__info_name}>{props.product.name}</h2>
                 <h2 className={style.cartItemBody__info_brand}>{props.product.brand}</h2>
                 <span className={style.cartItemBody__info_price}>
-                    {props.product.prices[0].currency.symbol}{props.product.prices[0].amount}
+                    {props.product.prices[props.currentCurrency].currency.symbol}
+                    {props.product.prices[props.currentCurrency].amount}
                 </span>
 
                 {props.product.attributes.map(attribute => (

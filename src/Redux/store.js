@@ -4,13 +4,15 @@ import {headerReducer} from "./headerReducer";
 import categoryReducer from "./categoryReducer";
 import {productReducer} from "./productReducer";
 import {cartReducer} from "./cartReducer";
+import {currencyReducer} from "./currencyReducer";
 
 
 let reducers = combineReducers({
     header: headerReducer,
     categoryPage: categoryReducer,
     productPage: productReducer,
-    cartPage: cartReducer
+    cartPage: cartReducer,
+    currencyPage: currencyReducer
 })
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleWare))

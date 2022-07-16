@@ -4,6 +4,7 @@ import logo from "../../Common/Images/logo.png"
 import empty_cart from "../../Common/Images/empty_cart.png"
 import CategoryButton from "./CategoryButton/CategoryButton";
 import DropdownCartContainer from "../DropdownCart/DropdownCartContainer";
+import CurrecyContainer from "./Currency/CurrecyContainer";
 
 
 const Header = (props) => {
@@ -19,7 +20,7 @@ const Header = (props) => {
                 <img src={logo} alt="logo" />
             </div>
             <div className={style.header__actions}>
-                <div className={style.actions_currency}>$ ^</div>
+                <CurrecyContainer />
                 <div className={style.actions_cart} onClick={props.handleShowCart}>
                     <img src={empty_cart} alt="empty_cart_image" className={style.actions_cart_img}/>
                 </div>
