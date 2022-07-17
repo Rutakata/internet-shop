@@ -1,8 +1,8 @@
 import React from "react";
 import style from "./DropdownCartItem.module.css"
 import AttributeBlock from "../../../Common/ProductAttributes/AttributeBlock";
-import colorStyle from "../../../Common/ProductAttributes/AttributeItems/ColorItem/ColorItemMini.module.css"
-import sizeStyle from "../../../Common/ProductAttributes/AttributeItems/SizeItem/SizeItemMini.module.css"
+import colorStyle from "../../../Common/ProductAttributes/AttributeItems/ColorItem/ColorItemMini.module.css";
+import sizeStyle from "../../../Common/ProductAttributes/AttributeItems/SizeItem/SizeItemMini.module.css";
 import attributeBlockStyle from "../../../Common/ProductAttributes/AttributeBlockMini.module.css";
 
 
@@ -17,9 +17,10 @@ const DropdownCartItem = (props) => {
                 </span>
                 <div className={style.dropdownCartItemBody__info__attributes}>
                     {
-                        props.product.attributes.map(attribute => (
+                        props.product.attributes.map((attribute, index) => (
                             <AttributeBlock attribute={attribute} colorStyle={colorStyle} sizeStyle={sizeStyle}
-                                            style={attributeBlockStyle}/>)
+                                            style={attributeBlockStyle} handleAttributeChange={props.handleAttributeChange}
+                                            key={index} productId={props.product.id}/>)
                         )
                     }
                 </div>

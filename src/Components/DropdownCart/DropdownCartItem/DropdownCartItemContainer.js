@@ -1,7 +1,7 @@
 import React from "react";
 import DropdownCartItem from "./DropdownCartItem";
 import {connect} from "react-redux";
-import {changeProductNumber} from "../../../Redux/cartReducer";
+import {changeProductNumber, handleCartAttributeChange} from "../../../Redux/cartReducer";
 import {getCurrentCurrency} from "../../../Redux/Selectors/currencySelectors";
 
 
@@ -18,7 +18,8 @@ class DropdownCartItemContainer extends React.Component {
 
     render() {
         return <DropdownCartItem product={this.props.product} handleNumberChange={this.handleNumberChange}
-                                 currentCurrency={this.props.currentCurrency}/>
+                                 currentCurrency={this.props.currentCurrency}
+                                 handleAttributeChange={this.props.handleCartAttributeChange}/>
     }
 }
 
@@ -26,4 +27,4 @@ let mapStateToProps = (state) => ({
     currentCurrency: getCurrentCurrency(state)
 })
 
-export default connect(mapStateToProps, {changeProductNumber})(DropdownCartItemContainer)
+export default connect(mapStateToProps, {changeProductNumber, handleCartAttributeChange})(DropdownCartItemContainer)

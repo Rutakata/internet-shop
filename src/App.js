@@ -18,7 +18,9 @@ const App = () => {
             <HeaderContainer />
             <Routes>
                 <Route path="/" element={<CategoryContainer />} />
-                <Route path="/category" element={<CategoryContainer />} />
+                <Route path="/category/">
+                    <Route path=":categoryName" element={<CategoryContainer />} />
+                </Route>
                 <Route path="/product/">
                     <Route path=":productId" element={<ProductInfoContainer />} />
                 </Route>

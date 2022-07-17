@@ -3,30 +3,31 @@ const HANDLE_ATTRIBUTE_CHANGE = "HANDLE_ATTRIBUTE_CHANGE"
 
 
 let initialState = {
-    productInfo: null,
-    chosenAttributes: {}
+    productInfo: null
 }
 
 export const productReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_PRODUCT_INFO:
-            return {...state, productInfo: action.product, chosenAttributes: {}}
+            return {...state, productInfo: action.product}
         case HANDLE_ATTRIBUTE_CHANGE:
-            let newAttributes = {...state.chosenAttributes}
+            let newAttributes = state.productInfo.attributes.map(attribute => {
+                if (attribute.name === action.id) {
+                    let newItems = attribute.items.map(item => {
+                        if (item.value === action.value) {
+                            return {...item, isActive: true}
+                        } else {
+                            return {...item, isActive: false}
+                        }
+                    })
 
-            if (Object.keys(newAttributes).length === 0) {
-                newAttributes[action.id] = action.value
-            }else {
-                for (let key in newAttributes) {
-                    if (key === action.id) {
-                        newAttributes[key] = action.value
-                    }else {
-                        newAttributes[action.id] = action.value
-                    }
+                    return {...attribute, items: newItems}
+                }else {
+                    return attribute
                 }
-            }
+            })
 
-            return {...state, chosenAttributes: {...newAttributes}}
+            return {...state, productInfo: {...state.productInfo, attributes: [...newAttributes]} }
         default: {
             return state
         }
@@ -38,6 +39,5 @@ export const setProductInfo = (product) => {
 }
 
 export const handleAttributeChange = (id, value) => {
-    console.log(id, value)
     return { type: HANDLE_ATTRIBUTE_CHANGE, id, value }
 }

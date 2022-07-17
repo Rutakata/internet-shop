@@ -6,6 +6,7 @@ import PriceBlock from "./PriceBlock/PriceBlock";
 import colorStyle from "../../Common/ProductAttributes/AttributeItems/ColorItem/ColorItem.module.css";
 import sizeStyle from "../../Common/ProductAttributes/AttributeItems/SizeItem/SizeItem.module.css";
 import attributeBlockStyle from "../../Common/ProductAttributes/AttributeBlock.module.css";
+import {changeProductAttributes} from "../../Redux/cartReducer";
 
 
 const ProductInfo = (props) => {
@@ -28,7 +29,7 @@ const ProductInfo = (props) => {
                         <AttributeBlock attribute={attribute} colorStyle={colorStyle} sizeStyle={sizeStyle}
                                         style={attributeBlockStyle} key={index}
                                         handleAttributeChange={props.handleAttributeChange}
-                                        chosenAttributes={props.chosenAttributes}/>
+                                        product={props.product}/>
                     ))
                 }
 
@@ -36,10 +37,7 @@ const ProductInfo = (props) => {
                             price={props.product.prices[props.currentCurrency].amount}/>
 
                 <button className={props.product.inStock ? style.productInfo_addToCart: style.productInfo_addToCart_disabled}
-                        onClick={() => {props.addProductToCart({
-                            product: props.product,
-                            chosenAttributes: props.chosenAttributes
-                        })}}
+                        onClick={() => {props.addProductToCart(props.product)}}
                         disabled={!props.product.inStock}>
                     Add to cart
                 </button>

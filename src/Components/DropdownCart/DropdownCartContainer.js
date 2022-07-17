@@ -5,7 +5,7 @@ import DropdownCart from "./DropdownCart";
 import {getCurrentCurrency} from "../../Redux/Selectors/currencySelectors";
 
 
-class DropdownCartContainer extends React.Component {
+class DropdownCartContainer extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,11 +14,11 @@ class DropdownCartContainer extends React.Component {
     }
 
     componentDidUpdate() {
-        if (this.props.cart.length !== this.state.numberOfProducts) {
+
             this.setState({
                 numberOfProducts: this.props.cart.length
             })
-        }
+
     }
 
     render() {

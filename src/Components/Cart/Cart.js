@@ -7,7 +7,7 @@ const Cart = (props) => {
     return (
         <div className={style.cartBlock}>
             <h1 className={style.cartBlock__header}>CART</h1>
-            {props.products.map(product => (<CartItemContainer product={product.product}/>))}
+            {props.products.map(product => (<CartItemContainer product={product}/>))}
         </div>
     )
 }

@@ -8,7 +8,7 @@ const CategoryButton = (props) => {
     return (
         <NavLink className={style.navigation__category}
                  activeClassName={style.navigation__category_active}
-              to={"/category"}
+              to={`/category/${categoryName}`}
               onClick={() => {props.changeCurrentCategory(props.category.name)}}>
             {categoryName}
         </NavLink>

@@ -6,6 +6,8 @@ import {setCurrentCategory} from "../../Redux/categoryReducer";
 import {connect} from "react-redux";
 import Header from "./Header";
 import {getCategories} from "../../Redux/Selectors/headerSelectors";
+import {compose} from "redux";
+import {withRouter} from "../../HOC/withRouter";
 
 class HeaderContainer extends React.Component {
     constructor(props) {

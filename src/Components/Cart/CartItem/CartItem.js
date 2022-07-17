@@ -17,9 +17,10 @@ const CartItem = (props) => {
                     {props.product.prices[props.currentCurrency].amount}
                 </span>
 
-                {props.product.attributes.map(attribute => (
+                {props.product.attributes.map((attribute) => (
                     <AttributeBlock attribute={attribute} style={attributeStyle} colorStyle={colorStyle}
-                                    sizeStyle={sizeStyle}/>
+                                    sizeStyle={sizeStyle} handleAttributeChange={props.handleAttributeChange}
+                                    key={attribute.name} productId={props.product.id}/>
                 ))}
             </div>
             <div className={style.cartItemBody__numberBlock}>

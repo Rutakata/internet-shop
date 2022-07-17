@@ -1,4 +1,4 @@
-.colorItem {
+.colorItem, .colorItem_active {
     width: 20px;
     height: 20px;
     display: inline-block;
@@ -9,6 +9,6 @@
 .colorItem:hover {
     border: 1px solid #5ECE7B;
 }
-.colorItem_choice {
+.colorItem_active {
     border: 1px solid #5ECE7B;
 }

@@ -1,4 +1,4 @@
-.sizeItem {
+.sizeItem, .sizeItem_active {
     width: 25px;
     height: 25px;
     border: 1px solid #1D1F22;
@@ -13,6 +13,10 @@
     box-sizing: border-box;
 }
 .sizeItem:hover {
+    background-color: #1D1F22;
+    color: #fff;
+}
+.sizeItem_active {
     background-color: #1D1F22;
     color: #fff;
 }
