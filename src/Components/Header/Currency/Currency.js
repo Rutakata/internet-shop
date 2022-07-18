@@ -2,15 +2,10 @@ import React from "react";
 
 
 const Currency = (props) => {
-    // let options = props.currencies.map(currency => (
-    //     <option value={currency.label} onClick={handleSelectChange}>
-    //         {currency.symbol} {currency.label}
-    //     </option>
-    // ))
-
     let handleSelectChange = (event) => {
         console.log(event.target.value)
         props.setCurrentCurrency(event.target.value)
+        props.currentCurrency(event.target.value)
     }
 
     return (

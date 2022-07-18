@@ -4,6 +4,8 @@ import AttributeBlock from "../../../Common/ProductAttributes/AttributeBlock";
 import attributeStyle from "../../../Common/ProductAttributes/AttributeBlock.module.css";
 import colorStyle from "../../../Common/ProductAttributes/AttributeItems/ColorItem/ColorItem.module.css";
 import sizeStyle from "../../../Common/ProductAttributes/AttributeItems/SizeItem/SizeItem.module.css"
+import GalleryButton from "./GalleryButton";
+import ProductNumberButton from "../../../Common/ProductNumberButton/ProductNumberButton";
 
 
 const CartItem = (props) => {
@@ -24,12 +26,28 @@ const CartItem = (props) => {
                 ))}
             </div>
             <div className={style.cartItemBody__numberBlock}>
-                <div className={style.cartItemBody__numberBlock_button}>+</div>
+                <ProductNumberButton style={style.cartItemBody__numberBlock_button}
+                                     changeProductNumber={props.changeProductNumber} id={props.product.id}
+                                     productNumber={props.product.number + 1} symbol="+"/>
+                {/*<div className={style.cartItemBody__numberBlock_button} onClick={() => {*/}
+                {/*    props.changeProductNumber(props.product.id, props.product.number + 1)*/}
+                {/*}}>+</div>*/}
                 <div className={style.cartItemBody__numberBlock_number}>{props.product.number}</div>
-                <div className={style.cartItemBody__numberBlock_button}>-</div>
+                <ProductNumberButton style={style.cartItemBody__numberBlock_button}
+                                     changeProductNumber={props.changeProductNumber} id={props.product.id}
+                                     productNumber={props.product.number - 1} symbol="-"/>
+                {/*<div className={style.cartItemBody__numberBlock_button} onClick={() => {*/}
+                {/*    props.changeProductNumber(props.product.id, props.product.number - 1)*/}
+                {/*}}>-</div>*/}
             </div>
             <div className={style.cartItemBody__gallery}>
-                <img src={props.product.gallery[0]} className={style.cartItemBody__gallery_image}/>
+                <img src={props.product.gallery[props.currentImage]} className={style.cartItemBody__gallery_image} alt="Product"/>
+                <div className={style.cartItemBody__gallery_buttonsWrapper}>
+                    <GalleryButton imageNumber={props.currentImage - 1} setGalleryImage={props.setGalleryImage}
+                                   symbol="<"/>
+                    <GalleryButton imageNumber={props.currentImage + 1} setGalleryImage={props.setGalleryImage}
+                                   symbol=">"/>
+                </div>
             </div>
         </div>
     )

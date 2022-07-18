@@ -1,10 +1,10 @@
 import React from "react";
 import {client} from "../../../apolloClient";
-import {GET_ALL_CATEGORY} from "../../../Queries/Category";
 import {GET_CURRENCIES} from "../../../Queries/Currencies";
 import {connect} from "react-redux";
 import {getCurrencies, getCurrentCurrency} from "../../../Redux/Selectors/currencySelectors";
 import {setCurrencies, setCurrentCurrency} from "../../../Redux/currencyReducer";
+import {convertTotal} from "../../../Redux/cartReducer";
 import Currency from "./Currency";
 
 
@@ -45,7 +45,7 @@ class CurrecyContainer extends React.Component {
     render() {
         if (this.state.loading) return <div>$</div>
         return <Currency currencies={this.props.currencies} currentCurrency={this.props.currentCurrency}
-                         setCurrentCurrency={this.props.setCurrentCurrency}/>
+                         setCurrentCurrency={this.props.setCurrentCurrency} convertTotal={this.props.convertTotal}/>
     }
 }
 
@@ -54,4 +54,4 @@ let mapStateToProps = (state) => ({
     currentCurrency: getCurrentCurrency(state)
 })
 
-export default connect(mapStateToProps, {setCurrencies, setCurrentCurrency})(CurrecyContainer)
+export default connect(mapStateToProps, {setCurrencies, setCurrentCurrency, convertTotal})(CurrecyContainer)

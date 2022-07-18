@@ -1,7 +1,6 @@
 import React from "react";
 import ColorItem from "./AttributeItems/ColorItem/ColorItem";
 import SizeItem from "./AttributeItems/SizeItem/SizeItem";
-import {changeProductAttributes} from "../../Redux/cartReducer";
 
 
 const AttributeBlock = (props) => {

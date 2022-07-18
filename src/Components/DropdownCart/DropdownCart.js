@@ -13,6 +13,10 @@ const DropdownCart = (props) => {
                     <span> {props.numberOfProducts} items</span>
                 </div>
                 {props.cart.map(product => (<DropdownCartItemContainer product={product} />))}
+                <div>
+                    <span>Total</span>
+                    <span>{props.total}</span>
+                </div>
                 <div className={style.dropdownCartBody__buttons}>
                     <Link to={"/cart"}>
                         <button className={style.dropdownCartBody__buttons__viewBag}>View bag</button>

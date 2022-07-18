@@ -1,6 +1,7 @@
 .dropdownCartBody {
     width: 325px;
-    height: 500px;
+    min-height: 100px;
+    max-height: 550px;
     position: absolute;
     right: 70px;
     background-color: #fff;

@@ -8,6 +8,7 @@ import Header from "./Header";
 import {getCategories} from "../../Redux/Selectors/headerSelectors";
 import {compose} from "redux";
 import {withRouter} from "../../HOC/withRouter";
+import {getCartLength} from "../../Redux/Selectors/cartPageSelectors";
 
 class HeaderContainer extends React.Component {
     constructor(props) {
@@ -46,12 +47,14 @@ class HeaderContainer extends React.Component {
 
     render() {
         return <Header categories={this.props.categories} changeCurrentCategory={this.props.setCurrentCategory}
-                       showCart={this.state.showCart} handleShowCart={this.handleShowCart}/>
+                       showCart={this.state.showCart} handleShowCart={this.handleShowCart}
+                       cartLength={this.props.cartLength}/>
     }
 }
 
 let mapStateToProps = (state) => ({
-    categories: getCategories(state)
+    categories: getCategories(state),
+    cartLength: getCartLength(state),
 })
 
 export default connect(mapStateToProps, {setCategories, setCurrentCategory})(HeaderContainer)

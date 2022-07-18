@@ -4,6 +4,7 @@ import AttributeBlock from "../../../Common/ProductAttributes/AttributeBlock";
 import colorStyle from "../../../Common/ProductAttributes/AttributeItems/ColorItem/ColorItemMini.module.css";
 import sizeStyle from "../../../Common/ProductAttributes/AttributeItems/SizeItem/SizeItemMini.module.css";
 import attributeBlockStyle from "../../../Common/ProductAttributes/AttributeBlockMini.module.css";
+import ProductNumberButton from "../../../Common/ProductNumberButton/ProductNumberButton";
 
 
 const DropdownCartItem = (props) => {
@@ -26,19 +27,15 @@ const DropdownCartItem = (props) => {
                 </div>
             </div>
             <div className={style.dropdownCartItemBody__productNumber}>
-                <div className={style.dropdownCartItemBody__productNumber_button} onClick={() => {
-                    props.handleNumberChange(props.product.id, props.product.number+1)
-                }}>
-                    +
-                </div>
+                <ProductNumberButton style={style.dropdownCartItemBody__productNumber_button}
+                                     changeProductNumber={props.handleNumberChange} id={props.product.id}
+                                     productNumber={props.product.number+1} symbol="+"/>
 
                 <div>{props.product.number}</div>
 
-                <div className={style.dropdownCartItemBody__productNumber_button} onClick={() => {
-                    props.handleNumberChange(props.product.id, props.product.number-1)
-                }}>
-                    -
-                </div>
+                <ProductNumberButton style={style.dropdownCartItemBody__productNumber_button}
+                                     changeProductNumber={props.handleNumberChange} id={props.product.id}
+                                     productNumber={props.product.number-1} symbol="-"/>
             </div>
             <div className={style.dropdownCartItemBody__productImage}>
                 <img src={props.product.gallery[0]} alt="product"/>

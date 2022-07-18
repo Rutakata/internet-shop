@@ -2,7 +2,7 @@ import React from "react";
 import ProductInfo from "./ProductInfo";
 import {getChosenAttributes, getProductInfo} from "../../Redux/Selectors/productPageSelectors";
 import {setProductInfo, handleAttributeChange} from "../../Redux/productReducer";
-import {addProductToCart, changeProductAttributes} from "../../Redux/cartReducer";
+import {addProductToCart} from "../../Redux/cartReducer";
 import {connect} from "react-redux";
 import {client} from "../../apolloClient";
 import {compose} from "redux";

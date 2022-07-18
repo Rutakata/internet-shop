@@ -61,3 +61,19 @@
     top: 50%;
     transform: translateY(-50%);
 }
+.cartItemBody__gallery_buttonsWrapper {
+    position: absolute;
+    z-index: 1;
+    right: 16px;
+    bottom: 16px;
+    display: flex;
+    gap: 8px;
+}
+.cartItemBody__gallery_button {
+    width: 24px;
+    height: 24px;
+    background-color: rgba(0, 0, 0, 73%);
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}

@@ -1,32 +1,43 @@
+import currency from "../Components/Header/Currency/Currency";
+
 const ADD_PRODUCT_TO_CART = "ADD_PRODUCT_TO_CART"
 const CHANGE_PRODUCT_NUMBER = "CHANGE_PRODUCT_NUMBER"
 const HANDLE_CART_ATTRIBUTE_CHANGE = "HANDLE_CART_ATTRIBUTE_CHANGE"
+const CONVERT_TOTAL_CURRENCY = "CHANGE_TOTAL_CURRENCY"
 
 
 let initialState =  {
-    cart: []
+    cart: [],
+    total: 0
 }
 
 export const cartReducer = (state=initialState, action) => {
     switch (action.type) {
         case ADD_PRODUCT_TO_CART:
             if (!state.cart.some(product => product.id === action.product.id)) {
-                return {...state, cart: [...state.cart, {...action.product, number: 1}]}
+                return {...state,
+                    cart: [...state.cart, {...action.product, number: 1}],
+                    total: state.total + action.product.prices[0].amount}
             }
             return state
 
         case CHANGE_PRODUCT_NUMBER:
+            let prevNumber = 0
+            let productPrice = 0
+
             let newProductCart = state.cart.map(product => {
                 if (product.id === action.id) {
-                    product.number = action.number
-
-                    return product
+                    prevNumber = product.number
+                    productPrice = product.prices[0].amount
+                    return {...product, number: action.number < 1 ? 1: action.number}
                 }
 
                 return product
             })
 
-            return {...state, cart: [...newProductCart]}
+            return {...state,
+                cart: [...newProductCart],
+                total: (state.total - (prevNumber*productPrice) + (productPrice*(action.number < 1 ? 1: action.number))).toFixed(2)}
 
         case HANDLE_CART_ATTRIBUTE_CHANGE:
             let newCart = state.cart.map(product => {
@@ -54,6 +65,16 @@ export const cartReducer = (state=initialState, action) => {
             })
 
             return {...state, cart: [...newCart]}
+
+        case CONVERT_TOTAL_CURRENCY:
+            let newTotal = 0
+
+            state.cart.forEach(product => {
+                newTotal += (product.prices[action.currency].amount * product.number)
+            })
+
+            return {...state, total: newTotal}
+
         default:
             return state
     }
@@ -69,4 +90,8 @@ export const changeProductNumber = (id, number) => {
 
 export const handleCartAttributeChange = (id, value, productId) => {
     return { type: HANDLE_CART_ATTRIBUTE_CHANGE, productId, id, value }
+}
+
+export const convertTotal = (currency) => {
+    return { type: CONVERT_TOTAL_CURRENCY, currency }
 }

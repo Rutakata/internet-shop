@@ -21,9 +21,15 @@ const Header = (props) => {
             </div>
             <div className={style.header__actions}>
                 <CurrecyContainer />
+
                 <div className={style.actions_cart} onClick={props.handleShowCart}>
                     <img src={empty_cart} alt="empty_cart_image" className={style.actions_cart_img}/>
+
+                    <div className={props.cartLength !== 0 ? style.actions_cart_size_active : style.actions_cart_size}>
+                        {props.cartLength}
+                    </div>
                 </div>
+
                 <DropdownCartContainer style={style.dropdownCartWrapper} showCart={props.showCart}
                                        handleShowCart={props.handleShowCart}/>
             </div>
