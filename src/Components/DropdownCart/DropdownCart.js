@@ -2,6 +2,8 @@ import React from "react";
 import style from "./DropdownCart.module.css";
 import DropdownCartItemContainer from "./DropdownCartItem/DropdownCartItemContainer";
 import {Link} from "react-router-dom";
+import PriceBlock from "./PriceBlock/PriceBlock";
+import PriceBlockContainer from "./PriceBlock/PriceBlockContainer";
 
 
 const DropdownCart = (props) => {
@@ -13,10 +15,9 @@ const DropdownCart = (props) => {
                     <span> {props.numberOfProducts} items</span>
                 </div>
                 {props.cart.map(product => (<DropdownCartItemContainer product={product} />))}
-                <div className={style.dropdownCartBody__totalPrice}>
-                    <span className={style.dropdownCartBody__totalPrice_total}>Total</span>
-                    <span className={style.dropdownCartBody__totalPrice_price}>{props.currencySymbol}{props.total}</span>
-                </div>
+
+                <PriceBlockContainer style={style} />
+
                 <div className={style.dropdownCartBody__buttons}>
                     <Link to={"/cart"}>
                         <button className={style.dropdownCartBody__buttons__viewBag}>View bag</button>

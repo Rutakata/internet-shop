@@ -24,17 +24,12 @@ class DropdownCartContainer extends React.PureComponent {
     render() {
         return <DropdownCart numberOfProducts={this.state.numberOfProducts} cart={this.props.cart}
                              style={this.props.style} showCart={this.props.showCart}
-                             handleShowCart={this.props.handleShowCart} total={this.props.total}
-                             сurrentCurrency={this.props.currency}
-                             currencySymbol={this.props.currencies[this.props.currency].symbol}/>
+                             handleShowCart={this.props.handleShowCart} />
     }
 }
 
 let mapStateToProps = (state) => ({
     cart: getCart(state),
-    total: getTotal(state),
-    currency: getCurrentCurrency(state),
-    currencies: getCurrencies(state)
 })
 
 export default connect(mapStateToProps, null)(DropdownCartContainer)
