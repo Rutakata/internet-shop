@@ -1,5 +1,3 @@
-import currency from "../Components/Header/Currency/Currency";
-
 const ADD_PRODUCT_TO_CART = "ADD_PRODUCT_TO_CART"
 const CHANGE_PRODUCT_NUMBER = "CHANGE_PRODUCT_NUMBER"
 const HANDLE_CART_ATTRIBUTE_CHANGE = "HANDLE_CART_ATTRIBUTE_CHANGE"
@@ -17,7 +15,7 @@ export const cartReducer = (state=initialState, action) => {
             if (!state.cart.some(product => product.id === action.product.id)) {
                 return {...state,
                     cart: [...state.cart, {...action.product, number: 1}],
-                    total: state.total + action.product.prices[0].amount}
+                    total: state.total + action.product.prices[action.currency].amount}
             }
             return state
 
@@ -28,7 +26,7 @@ export const cartReducer = (state=initialState, action) => {
             let newProductCart = state.cart.map(product => {
                 if (product.id === action.id) {
                     prevNumber = product.number
-                    productPrice = product.prices[0].amount
+                    productPrice = product.prices[action.currentCurrency].amount
                     return {...product, number: action.number < 1 ? 1: action.number}
                 }
 
@@ -80,12 +78,13 @@ export const cartReducer = (state=initialState, action) => {
     }
 }
 
-export const addProductToCart = (product) => {
-    return { type: ADD_PRODUCT_TO_CART, product }
+export const addProductToCart = (product, currency) => {
+    return { type: ADD_PRODUCT_TO_CART, product, currency }
 }
 
-export const changeProductNumber = (id, number) => {
-    return { type: CHANGE_PRODUCT_NUMBER, id, number }
+export const changeProductNumber = (id, number, currentCurrency) => {
+    console.log(currentCurrency)
+    return { type: CHANGE_PRODUCT_NUMBER, id, number, currentCurrency }
 }
 
 export const handleCartAttributeChange = (id, value, productId) => {

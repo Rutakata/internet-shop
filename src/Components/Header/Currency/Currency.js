@@ -5,7 +5,7 @@ const Currency = (props) => {
     let handleSelectChange = (event) => {
         console.log(event.target.value)
         props.setCurrentCurrency(event.target.value)
-        props.currentCurrency(event.target.value)
+        props.convertTotal(event.target.value)
     }
 
     return (

@@ -29,13 +29,15 @@ const DropdownCartItem = (props) => {
             <div className={style.dropdownCartItemBody__productNumber}>
                 <ProductNumberButton style={style.dropdownCartItemBody__productNumber_button}
                                      changeProductNumber={props.handleNumberChange} id={props.product.id}
-                                     productNumber={props.product.number+1} symbol="+"/>
+                                     productNumber={props.product.number+1} symbol="+"
+                                     currentCurrency={props.currentCurrency}/>
 
                 <div>{props.product.number}</div>
 
                 <ProductNumberButton style={style.dropdownCartItemBody__productNumber_button}
                                      changeProductNumber={props.handleNumberChange} id={props.product.id}
-                                     productNumber={props.product.number-1} symbol="-"/>
+                                     productNumber={props.product.number-1} symbol="-"
+                                     currentCurrency={props.currentCurrency}/>
             </div>
             <div className={style.dropdownCartItemBody__productImage}>
                 <img src={props.product.gallery[0]} alt="product"/>

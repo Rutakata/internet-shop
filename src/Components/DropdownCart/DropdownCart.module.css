@@ -57,3 +57,18 @@
     border: 1px solid #5ECE7B;
     box-sizing: border-box;
 }
+.dropdownCartBody__totalPrice {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.dropdownCartBody__totalPrice_total {
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+.dropdownCartBody__totalPrice_price {
+    font-family: Raleway, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}

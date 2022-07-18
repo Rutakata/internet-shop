@@ -12,8 +12,8 @@ class DropdownCartItemContainer extends React.Component {
         this.handleNumberChange = this.handleNumberChange.bind(this)
     }
 
-    handleNumberChange(id, number) {
-        this.props.changeProductNumber(id, number)
+    handleNumberChange(id, number, currency) {
+        this.props.changeProductNumber(id, number, currency)
     }
 
     render() {
