@@ -1,5 +1,4 @@
 import React from "react";
-import style from "../DropdownCart.module.css";
 
 
 const PriceBlock = (props) => {

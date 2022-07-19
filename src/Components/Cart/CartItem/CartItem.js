@@ -28,17 +28,14 @@ const CartItem = (props) => {
             <div className={style.cartItemBody__numberBlock}>
                 <ProductNumberButton style={style.cartItemBody__numberBlock_button}
                                      changeProductNumber={props.changeProductNumber} id={props.product.id}
-                                     productNumber={props.product.number + 1} symbol="+"/>
-                {/*<div className={style.cartItemBody__numberBlock_button} onClick={() => {*/}
-                {/*    props.changeProductNumber(props.product.id, props.product.number + 1)*/}
-                {/*}}>+</div>*/}
+                                     productNumber={props.product.number + 1} symbol="+"
+                                     currentCurrency={props.currentCurrency}/>
+
                 <div className={style.cartItemBody__numberBlock_number}>{props.product.number}</div>
                 <ProductNumberButton style={style.cartItemBody__numberBlock_button}
                                      changeProductNumber={props.changeProductNumber} id={props.product.id}
-                                     productNumber={props.product.number - 1} symbol="-"/>
-                {/*<div className={style.cartItemBody__numberBlock_button} onClick={() => {*/}
-                {/*    props.changeProductNumber(props.product.id, props.product.number - 1)*/}
-                {/*}}>-</div>*/}
+                                     productNumber={props.product.number - 1} symbol="-"
+                                     currentCurrency={props.currentCurrency}/>
             </div>
             <div className={style.cartItemBody__gallery}>
                 <img src={props.product.gallery[props.currentImage]} className={style.cartItemBody__gallery_image} alt="Product"/>

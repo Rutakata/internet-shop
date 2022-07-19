@@ -6,7 +6,8 @@ const CONVERT_TOTAL_CURRENCY = "CHANGE_TOTAL_CURRENCY"
 
 let initialState =  {
     cart: [],
-    total: 0
+    total: 0,
+    totalNumber: 0
 }
 
 export const cartReducer = (state=initialState, action) => {
@@ -15,7 +16,8 @@ export const cartReducer = (state=initialState, action) => {
             if (!state.cart.some(product => product.id === action.product.id)) {
                 return {...state,
                     cart: [...state.cart, {...action.product, number: 1}],
-                    total: state.total + action.product.prices[action.currency].amount}
+                    total: state.total + action.product.prices[action.currency].amount,
+                    totalNumber: state.totalNumber + 1}
             }
             return state
 
@@ -33,9 +35,14 @@ export const cartReducer = (state=initialState, action) => {
                 return product
             })
 
+            console.log(newProductCart)
+            let newTotalNumber = newProductCart.reduce((quantity, product) => quantity + product.number, 0)
+
             return {...state,
                 cart: [...newProductCart],
-                total: (state.total - (prevNumber*productPrice) + (productPrice*(action.number < 1 ? 1: action.number))).toFixed(2)}
+                total: (state.total - (prevNumber*productPrice) +
+                    (productPrice*(action.number < 1 ? 1: action.number))).toFixed(2),
+                totalNumber: newTotalNumber}
 
         case HANDLE_CART_ATTRIBUTE_CHANGE:
             let newCart = state.cart.map(product => {
@@ -83,7 +90,6 @@ export const addProductToCart = (product, currency) => {
 }
 
 export const changeProductNumber = (id, number, currentCurrency) => {
-    console.log(currentCurrency)
     return { type: CHANGE_PRODUCT_NUMBER, id, number, currentCurrency }
 }
 

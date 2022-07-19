@@ -1,0 +1,17 @@
+.priceBlock {
+    display: grid;
+    grid-template-columns: 140px 140px;
+    grid-template-rows: 1fr 1fr 1fr;
+    border-top: 1px solid #E5E5E5;
+    padding: 24px 0;
+}
+.priceBlock__section {
+    font-family: Raleway, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+}
+.priceBlock__data {
+    font-family: Raleway, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+}

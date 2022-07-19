@@ -8,3 +8,6 @@ export const getCartLength = (state) => {
 export const getTotal = (state) => {
     return state.cartPage.total
 }
+export const getTotalQuantity = (state) => {
+    return state.cartPage.totalNumber
+}
