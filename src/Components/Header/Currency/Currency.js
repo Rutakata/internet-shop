@@ -1,4 +1,5 @@
 import React from "react";
+import style from "./Currency.module.css"
 
 
 const Currency = (props) => {
@@ -10,9 +11,9 @@ const Currency = (props) => {
 
     return (
         <div>
-            <select onChange={handleSelectChange}>
+            <select onChange={handleSelectChange} className={style.currencySelect}>
                 {props.currencies.map((currency, index) => (
-                    <option value={index} key={index}>
+                    <option value={index} key={currency.label} className={style.currencySelect__option}>
                         {currency.symbol} {currency.label}
                     </option>
                 ))}

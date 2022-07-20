@@ -3,8 +3,7 @@ const SET_CURRENT_CATEGORY = "SET_CURRENT_CATEGORY"
 
 
 let initialState = {
-    allProducts: [],
-    currentCategory: "all"
+    allProducts: []
 }
 
 let categoryReducer = (state = initialState, action) => {

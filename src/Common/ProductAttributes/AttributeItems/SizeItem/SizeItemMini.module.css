@@ -11,6 +11,7 @@
     line-height: 25px;
     text-align: center;
     box-sizing: border-box;
+    overflow: hidden;
 }
 .sizeItem:hover {
     background-color: #1D1F22;

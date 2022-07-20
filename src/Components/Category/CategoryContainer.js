@@ -4,36 +4,45 @@ import {getAllProducts, getCurrentCategory} from "../../Redux/Selectors/category
 import Category from "./Category";
 import {setProductInfo} from "../../Redux/productReducer";
 import {getCurrentCurrency} from "../../Redux/Selectors/currencySelectors";
+import {compose} from "redux";
+import {withRouter} from "../../HOC/withRouter";
 
 
 class CategoryContainer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            currentCategoryProducts: []
+            currentCategoryProducts: [],
+            currentCategory: props.categoryName
         }
+
+        console.log(this.state.currentCategory)
     }
 
     componentDidMount() {
         this.setState({
-            currentCategoryProducts: this.props.allProducts
+            currentCategoryProducts: this.state.currentCategory !== "all" ? this.props.allProducts.filter(product =>
+                (product.category === this.state.currentCategory ? product: null)
+            ) : this.props.allProducts
         })
     }
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.currentCategory !== this.props.currentCategory) {
-            this.setProducts(this.props.allProducts, this.props.currentCategory)
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.currentCategory !== this.props.categoryName) {
+            this.setProducts(this.props.allProducts, this.props.categoryName)
         }
     }
 
     setProducts(allProducts, currentCategory) {
         if (currentCategory === "all") {
             this.setState({
-                currentCategoryProducts: this.props.allProducts
+                currentCategoryProducts: this.props.allProducts,
+                currentCategory: currentCategory
             })
         }else {
             this.setState({
-                currentCategoryProducts: allProducts.filter(product => (product.category === currentCategory ? product: null))
+                currentCategoryProducts: allProducts.filter(product => (product.category === currentCategory ? product: null)),
+                currentCategory: currentCategory
             })
         }
     }
@@ -46,8 +55,7 @@ class CategoryContainer extends React.Component {
 
 let mapStateToProps = (state) => ({
     allProducts: getAllProducts(state),
-    currentCategory: getCurrentCategory(state),
     currentCurrency: getCurrentCurrency(state)
 })
 
-export default connect(mapStateToProps, {setProductInfo})(CategoryContainer)
+export default compose(withRouter, connect(mapStateToProps, {setProductInfo}))(CategoryContainer)

@@ -1,0 +1,10 @@
+.loadingBody {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+.loadingBody__spinner {
+    height: 100%;
+}

@@ -6,6 +6,7 @@ import {getCurrencies, getCurrentCurrency} from "../../../Redux/Selectors/curren
 import {setCurrencies, setCurrentCurrency} from "../../../Redux/currencyReducer";
 import {convertTotal} from "../../../Redux/cartReducer";
 import Currency from "./Currency";
+import LoadingPage from "../../../Common/LoadingPage/LoadingPage";
 
 
 class CurrecyContainer extends React.Component {
@@ -43,7 +44,7 @@ class CurrecyContainer extends React.Component {
     }
 
     render() {
-        if (this.state.loading) return <div>$</div>
+        if (this.state.loading) return <LoadingPage />
         return <Currency currencies={this.props.currencies} currentCurrency={this.props.currentCurrency}
                          setCurrentCurrency={this.props.setCurrentCurrency} convertTotal={this.props.convertTotal}/>
     }

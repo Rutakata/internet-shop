@@ -1,7 +1,13 @@
-select {
+.currencySelect {
     font-family: Raleway, sans-serif;
     font-size: 18px;
-    font-weight: 500;
-    width: 30px;
+    font-weight: 600;
     border: none;
+    height: 30px;
+}
+.currencySelect__option {
+    border: none;
+}
+.currencySelect__option:focus {
+    background-color: gray;
 }

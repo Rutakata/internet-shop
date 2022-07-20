@@ -6,15 +6,15 @@ import {setCurrentCategory} from "../../Redux/categoryReducer";
 import {connect} from "react-redux";
 import Header from "./Header";
 import {getCategories} from "../../Redux/Selectors/headerSelectors";
-import {compose} from "redux";
-import {withRouter} from "../../HOC/withRouter";
 import {getCartLength} from "../../Redux/Selectors/cartPageSelectors";
+import LoadingPage from "../../Common/LoadingPage/LoadingPage";
 
 class HeaderContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showCart: "none"
+            showCart: "none",
+            loading: true
         }
 
         this.handleShowCart = this.handleShowCart.bind(this)
@@ -39,6 +39,10 @@ class HeaderContainer extends React.Component {
             query: GET_CATEGORIES,
         });
         this.subobj = watchQuery.subscribe(({data, loading}) => {
+            this.setState({
+                loading: loading
+            })
+
             if (!loading) {
                 this.props.setCategories(data.categories)
             }
@@ -46,6 +50,7 @@ class HeaderContainer extends React.Component {
     }
 
     render() {
+        if (this.state.loading) return <LoadingPage />
         return <Header categories={this.props.categories} changeCurrentCategory={this.props.setCurrentCategory}
                        showCart={this.state.showCart} handleShowCart={this.handleShowCart}
                        cartLength={this.props.cartLength}/>
