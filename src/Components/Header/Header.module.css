@@ -33,7 +33,7 @@
     color: #000;
     text-decoration: none;
 }
-.navigation__category:hover, .navigation__category_active {
+.navigation__category:hover,.navigation__category:active, .navigation__category_active {
     display: flex;
     align-items: center;
     height: 100%;
