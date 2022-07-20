@@ -9,7 +9,7 @@ let initialState = {
 export const productReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_PRODUCT_INFO:
-            return {...state, productInfo: action.product}
+            return {...state, productInfo: action.product, attributesReady: false}
         case HANDLE_ATTRIBUTE_CHANGE:
             let newAttributes = state.productInfo.attributes.map(attribute => {
                 if (attribute.name === action.id) {

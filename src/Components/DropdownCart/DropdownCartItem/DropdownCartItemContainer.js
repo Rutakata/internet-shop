@@ -18,8 +18,7 @@ class DropdownCartItemContainer extends React.Component {
 
     render() {
         return <DropdownCartItem product={this.props.product} handleNumberChange={this.handleNumberChange}
-                                 currentCurrency={this.props.currentCurrency}
-                                 handleAttributeChange={this.props.handleCartAttributeChange}/>
+                                 currentCurrency={this.props.currentCurrency} />
     }
 }
 
@@ -27,4 +26,4 @@ let mapStateToProps = (state) => ({
     currentCurrency: getCurrentCurrency(state)
 })
 
-export default connect(mapStateToProps, {changeProductNumber, handleCartAttributeChange})(DropdownCartItemContainer)
+export default connect(mapStateToProps, {changeProductNumber})(DropdownCartItemContainer)

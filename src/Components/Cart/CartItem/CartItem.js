@@ -21,7 +21,7 @@ const CartItem = (props) => {
 
                 {props.product.attributes.map((attribute) => (
                     <AttributeBlock attribute={attribute} style={attributeStyle} colorStyle={colorStyle}
-                                    sizeStyle={sizeStyle} handleAttributeChange={props.handleAttributeChange}
+                                    sizeStyle={sizeStyle} handleAttributeChange={null}
                                     key={attribute.name} productId={props.product.id}/>
                 ))}
             </div>

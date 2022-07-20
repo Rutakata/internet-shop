@@ -20,7 +20,7 @@ const DropdownCartItem = (props) => {
                     {
                         props.product.attributes.map((attribute, index) => (
                             <AttributeBlock attribute={attribute} colorStyle={colorStyle} sizeStyle={sizeStyle}
-                                            style={attributeBlockStyle} handleAttributeChange={props.handleAttributeChange}
+                                            style={attributeBlockStyle} handleAttributeChange={null}
                                             key={index} productId={props.product.id}/>)
                         )
                     }

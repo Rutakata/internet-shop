@@ -34,8 +34,7 @@ class CartItemContainer extends React.Component {
     render() {
         return <CartItem product={this.props.product} changeProductNumber={this.props.changeProductNumber}
                          currentCurrency={this.props.currentCurrency} currentImage={this.state.currentImage}
-                         handleAttributeChange={this.props.handleCartAttributeChange}
-                         setGalleryImage={this.setGalleryImage}/>
+                         setGalleryImage={this.setGalleryImage} />
     }
 }
 
@@ -43,4 +42,4 @@ let mapStateToProps = (state) => ({
     currentCurrency: getCurrentCurrency(state)
 })
 
-export default connect(mapStateToProps, {changeProductNumber, handleCartAttributeChange})(CartItemContainer)
+export default connect(mapStateToProps, {changeProductNumber})(CartItemContainer)

@@ -37,7 +37,10 @@ const ProductInfo = (props) => {
                             price={props.product.prices[props.currentCurrency].amount}/>
 
                 <button className={props.product.inStock ? style.productInfo_addToCart: style.productInfo_addToCart_disabled}
-                        onClick={() => {props.addProductToCart(props.product, props.currentCurrency)}}
+                        onClick={() => {
+                            let counter = props.checkAttributesReady(props.product)
+                            if (counter === props.product.attributes.length) props.addProductToCart(props.product, props.currentCurrency)
+                        }}
                         disabled={!props.product.inStock}>
                     Add to cart
                 </button>
