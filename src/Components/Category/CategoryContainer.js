@@ -1,61 +1,66 @@
 import React from "react";
 import {connect} from "react-redux";
-import {getAllProducts, getCurrentCategory} from "../../Redux/Selectors/categoryPageSelectors";
+import {getAllProducts} from "../../Redux/Selectors/categoryPageSelectors";
 import Category from "./Category";
 import {setProductInfo} from "../../Redux/productReducer";
 import {getCurrentCurrency} from "../../Redux/Selectors/currencySelectors";
 import {compose} from "redux";
 import {withRouter} from "../../HOC/withRouter";
+import {client} from "../../apolloClient";
+import {getCategoryProducts} from "../../Queries/Category";
+import LoadingPage from "../../Common/LoadingPage/LoadingPage";
+import {setProducts} from "../../Redux/categoryReducer";
 
 
 class CategoryContainer extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            currentCategoryProducts: [],
-            currentCategory: props.categoryName
-        }
 
-        console.log(this.state.currentCategory)
+        this.state = {
+            loading: true
+        }
     }
 
     componentDidMount() {
-        this.setState({
-            currentCategoryProducts: this.state.currentCategory !== "all" ? this.props.allProducts.filter(product =>
-                (product.category === this.state.currentCategory ? product: null)
-            ) : this.props.allProducts
+        this.getInitialData()
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.categoryName !== this.props.categoryName) {
+            this.getInitialData()
+        }
+    }
+
+    async getInitialData() {
+        const categoryQuery = client.watchQuery({
+            query: getCategoryProducts(),
+            variables: {
+                title: this.props.categoryName
+            }
+        })
+
+        this.subobj = categoryQuery.subscribe(({data, loading}) => {
+            this.setState({
+                loading: loading
+            })
+
+            if (!loading) {
+                this.props.setProducts(data.category.products)
+                this.subobj.unsubscribe()
+            }
         })
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.currentCategory !== this.props.categoryName) {
-            this.setProducts(this.props.allProducts, this.props.categoryName)
-        }
-    }
-
-    setProducts(allProducts, currentCategory) {
-        if (currentCategory === "all") {
-            this.setState({
-                currentCategoryProducts: this.props.allProducts,
-                currentCategory: currentCategory
-            })
-        }else {
-            this.setState({
-                currentCategoryProducts: allProducts.filter(product => (product.category === currentCategory ? product: null)),
-                currentCategory: currentCategory
-            })
-        }
-    }
-
     render() {
-        return <Category products={this.state.currentCategoryProducts} setProductInfo={this.props.setProductInfo}
+        if (this.state.loading) return <LoadingPage />
+        return <Category products={this.props.categoryProducts} setProductInfo={this.props.setProductInfo}
                          currentCurrency={this.props.currentCurrency} />
     }
 }
 
 let mapStateToProps = (state) => ({
-    allProducts: getAllProducts(state),
+    categoryProducts: getAllProducts(state),
     currentCurrency: getCurrentCurrency(state)
 })
 
-export default compose(withRouter, connect(mapStateToProps, {setProductInfo}))(CategoryContainer)
+export default compose(withRouter, connect(mapStateToProps, {setProductInfo, setProducts}))(CategoryContainer)
